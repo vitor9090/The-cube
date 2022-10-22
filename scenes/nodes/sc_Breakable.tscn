@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://da4652bn85tp4"]
+
+[ext_resource type="Script" path="res://src/Breakable/gd_Breakable_main.gd" id="1_dhi1t"]
+
+[node name="Breakable" type="Area3D"]
+script = ExtResource("1_dhi1t")

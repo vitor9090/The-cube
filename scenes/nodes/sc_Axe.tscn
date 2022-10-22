@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgrsf5ajt3mim"]
+
+[ext_resource type="PackedScene" uid="uid://connf7b7jrl1e" path="res://scenes/nodes/sc_PXSPhysicsObject.tscn" id="1_tw6ta"]
+[ext_resource type="Texture2D" uid="uid://cghhn12ur3c5c" path="res://data/sprites/sp_axe.png" id="2_3tsdo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10aa8"]
+
+[node name="Axe" type="Node3D"]
+
+[node name="Axe" parent="." instance=ExtResource("1_tw6ta")]
+top_level = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Axe"]
+flip_h = true
+pixel_size = 0.03
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("2_3tsdo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Axe"]
+shape = SubResource("BoxShape3D_10aa8")

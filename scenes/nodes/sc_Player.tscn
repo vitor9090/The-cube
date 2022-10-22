@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://coqntotb1dwo0"]
+
+[ext_resource type="Script" path="res://src/Player/gd_main_Player.gd" id="1_0qtxq"]
+[ext_resource type="PackedScene" uid="uid://bfavp4njpuarn" path="res://scenes/nodes/sc_Camera.tscn" id="2_vquh7"]
+[ext_resource type="AudioStream" uid="uid://d00rj3tjiec1b" path="res://data/sounds/Tile_walk_-005.wav" id="3_frfba"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8gfiv"]
+height = 3.0
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_0qtxq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8gfiv")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_vquh7")]
+
+[node name="HeightCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="SteppingSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_frfba")
+pitch_scale = 1.5

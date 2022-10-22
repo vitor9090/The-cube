@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfavp4njpuarn"]
+
+[ext_resource type="Script" path="res://src/Camera3D.gd" id="1_bhdrj"]
+[ext_resource type="PackedScene" uid="uid://bdxt1bjwv1j0p" path="res://Godot-3D-Line-Renderer/Line.tscn" id="2_kftqd"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476624, 0)
+script = ExtResource("1_bhdrj")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+target_position = Vector3(0, 0, -2.372)
+
+[node name="Line" parent="." instance=ExtResource("2_kftqd")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 0, 1, -3)
+top_level = true
