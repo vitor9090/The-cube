@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://diucy05wvnjio"]
+
+[ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="1_x5pl6"]
+
+[node name="HurtBox" type="Area3D"]
+script = ExtResource("1_x5pl6")

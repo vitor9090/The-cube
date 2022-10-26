@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd58h7pay1cw2"]
+
+[ext_resource type="Texture2D" uid="uid://bhdtnadw8mqwe" path="res://data/sprites/sp_bullet.png" id="1_6uwgl"]
+[ext_resource type="Script" path="res://src/Bullet/gd_Bullet_main.gd" id="2_xkm8p"]
+[ext_resource type="Texture2D" uid="uid://dhpw34byijw2f" path="res://data/sprites/sp_circle_particle.png" id="3_5x5xt"]
+[ext_resource type="PackedScene" uid="uid://bw42ubvd27yvb" path="res://scenes/nodes/sc_Damage_box.tscn" id="4_ml3eb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5e25"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_5x5xt")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2j2ne"]
+material = SubResource("StandardMaterial3D_s5e25")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_fxqu6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Bullet" type="Sprite3D"]
+pixel_size = 0.03
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+render_priority = 4
+texture = ExtResource("1_6uwgl")
+script = ExtResource("2_xkm8p")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 10
+mesh = SubResource("PlaneMesh_2j2ne")
+spread = 20.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+linear_accel_min = -2.0
+linear_accel_max = -2.0
+scale_amount_min = 0.04
+scale_amount_max = 0.04
+scale_amount_curve = SubResource("Curve_fxqu6")
+
+[node name="DamageBox" parent="." instance=ExtResource("4_ml3eb")]

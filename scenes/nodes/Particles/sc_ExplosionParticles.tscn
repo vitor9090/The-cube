@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://6kc7mxeldb7w"]
+
+[ext_resource type="Texture2D" uid="uid://cy6b64h1f5bsg" path="res://data/sprites/sp_explosion.png" id="1_xw4nn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1wki"]
+render_priority = 9
+transparency = 1
+depth_draw_mode = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("1_xw4nn")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wy1g0"]
+material = SubResource("StandardMaterial3D_d1wki")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_yb4b3"]
+_data = [Vector2(0.00771848, 0), 0.0, 9.90794, 0, 0, Vector2(0.0806173, 0.692914), 0.0, 0.0, 0, 0, Vector2(0.303602, 0), -7.08986, 0.0, 0, 0]
+point_count = 3
+
+[node name="ExplosionParticles" type="CPUParticles3D"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.2
+mesh = SubResource("PlaneMesh_wy1g0")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+angle_max = 180.0
+scale_amount_curve = SubResource("Curve_yb4b3")

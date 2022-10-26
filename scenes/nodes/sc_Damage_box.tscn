@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw42ubvd27yvb"]
+
+[ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="1_7gbld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgcrl"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="DamageBox" type="Area3D"]
+script = ExtResource("1_7gbld")
+destroy_after_damage = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rgcrl")

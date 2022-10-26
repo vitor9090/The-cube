@@ -10,7 +10,9 @@ var ground_friction = 0.1
 @export var gravity:float = 0.5
 @export var jump_height:float = 10
 
-@onready var stepping_sounds = $SteppingSounds
+@onready var stepping_sounds = $Sounds.get_children()
+var lastest_sound = null
+var sound = null
 
 enum POSITIONAL_STATES{
 	ON_GROUND,
@@ -23,6 +25,9 @@ var is_crouching:bool = false
 
 func _ready():
 	camera = get_viewport().get_camera_3d()
+	sound = stepping_sounds[0]
+	sound.play()
+	lastest_sound = sound
 
 func _physics_process(delta):
 	var input_vector:Vector2i = Vector2i(
@@ -47,8 +52,6 @@ func _physics_process(delta):
 	match positional_state:
 		POSITIONAL_STATES.FALLING:
 			_velocity.y -= gravity
-			if stepping_sounds.playing:
-				stepping_sounds.stop()
 		
 			if is_on_floor():
 				positional_state = POSITIONAL_STATES.ON_GROUND
@@ -59,18 +62,18 @@ func _physics_process(delta):
 				positional_state = POSITIONAL_STATES.JUMPING
 			
 			if input_vector.length() > 0:
-				if stepping_sounds.playing == false:
-					stepping_sounds.play(0.0)
+				if lastest_sound.playing == false:
+					sound = stepping_sounds[randi_range(0, 3)]
+					sound.play()
+					lastest_sound = sound
 			else:
-				if stepping_sounds.playing:
-					stepping_sounds.stop()
+				if lastest_sound.playing:
+					lastest_sound.stop()
 			
 			if !is_on_floor():
 				positional_state = POSITIONAL_STATES.FALLING
 		POSITIONAL_STATES.JUMPING:
 			_velocity.y -= gravity
-			if stepping_sounds.playing:
-				stepping_sounds.stop()
 			
 			if Input.is_action_just_released("player_action_jump") || _velocity.y == 0:
 				_velocity.y *= 0.5

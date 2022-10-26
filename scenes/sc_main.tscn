@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxrdl77y8d6pw"]
+
+[ext_resource type="Texture2D" uid="uid://d13xs4xg0ry0t" path="res://data/sprites/sp_water_foam_top.png" id="1_hjl0x"]
+[ext_resource type="PackedScene" uid="uid://dqbtnqeg2xk74" path="res://scenes/nodes/sc_Shiptscn.tscn" id="1_wh4nw"]
+[ext_resource type="Script" path="res://src/Sprite/gd_Sprite3D_increase_offse.gd" id="2_bjl88"]
+[ext_resource type="PackedScene" uid="uid://bfavp4njpuarn" path="res://scenes/nodes/sc_Camera.tscn" id="2_ywwcn"]
+[ext_resource type="PackedScene" uid="uid://cd58h7pay1cw2" path="res://scenes/nodes/sc_Bullet.tscn" id="7_h45uy"]
+[ext_resource type="PackedScene" uid="uid://bqui3mr5y882n" path="res://scenes/nodes/Particles/sc_Hit.tscn" id="8_qio5g"]
+[ext_resource type="PackedScene" uid="uid://ba7anl3y44isj" path="res://scenes/nodes/sc_Boss.tscn" id="8_t1qob"]
+[ext_resource type="PackedScene" uid="uid://6kc7mxeldb7w" path="res://scenes/nodes/Particles/sc_ExplosionParticles.tscn" id="11_7j30p"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uwl6w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a2oc"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.760784, 0.760784, 0.760784, 1)
+albedo_texture = ExtResource("1_hjl0x")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwcck"]
+transparency = 1
+albedo_color = Color(0.172549, 0, 0.545098, 1)
+albedo_texture = ExtResource("1_hjl0x")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="Environment" id="Environment_ygk3h"]
+background_mode = 1
+background_color = Color(0.290196, 0.290196, 0.290196, 1)
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 0.95
+adjustment_contrast = 0.8
+adjustment_saturation = 1.2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_wh4nw")]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 15.5, 0)
+mesh = SubResource("PlaneMesh_uwl6w")
+material = SubResource("StandardMaterial3D_1a2oc")
+script = ExtResource("2_bjl88")
+speed = Vector3(-9, 0, 1)
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 15, 0)
+mesh = SubResource("PlaneMesh_uwl6w")
+material = SubResource("StandardMaterial3D_lwcck")
+script = ExtResource("2_bjl88")
+speed = Vector3(-3, 0, 1)
+
+[node name="Camera3D" parent="." instance=ExtResource("2_ywwcn")]
+transform = Transform3D(-1.05367e-07, -0.707107, 0.707107, -1.05367e-07, 0.707107, 0.707107, -1, 0, -1.49012e-07, 2, 18, 0)
+current = true
+
+[node name="Bullet" parent="." instance=ExtResource("7_h45uy")]
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("11_7j30p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 16, 0)
+
+[node name="Hit" parent="." instance=ExtResource("8_qio5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 16.5, -1)
+
+[node name="Boss" parent="." instance=ExtResource("8_t1qob")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ygk3h")

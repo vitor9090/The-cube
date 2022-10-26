@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqbtnqeg2xk74"]
+
+[ext_resource type="Script" path="res://src/Plane/gd_Player_main.gd" id="1_56ao5"]
+[ext_resource type="ArrayMesh" uid="uid://cxfrtaux444c0" path="res://data/objects/plane.obj" id="2_wtdit"]
+[ext_resource type="Texture2D" uid="uid://dca2eigjcb8a7" path="res://data/sprites/sp_thruster.png" id="3_m7vcv"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="4_dbw81"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej1nf"]
+shading_mode = 0
+albedo_color = Color(0.866667, 0.741176, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sqe7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Thruster/Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Thruster/Sprite3D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q0mr0"]
+resource_name = "anim_thruster"
+length = 0.15
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Thruster/Sprite3D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Thruster/Sprite3D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6snr"]
+_data = {
+"RESET": SubResource("Animation_sqe7a"),
+"anim_thruster": SubResource("Animation_q0mr0")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74tun"]
+size = Vector3(0.007, 0.002, 0.002)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 1, 16, 0)
+script = ExtResource("1_56ao5")
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 9.31323e-10)
+material_override = SubResource("StandardMaterial3D_ej1nf")
+mesh = ExtResource("2_wtdit")
+skeleton = NodePath("../..")
+
+[node name="Thruster" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Thruster"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00235456, 0, 9.06765e-05)
+pixel_size = 0.0004
+axis = 1
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("3_m7vcv")
+hframes = 2
+
+[node name="Sprite3D2" type="Sprite3D" parent="Thruster"]
+transform = Transform3D(-3.8147e-08, -1, 2.86102e-07, -1, 8.31564e-16, -3.25825e-08, 5.11073e-09, -5.14984e-07, -1, 0.00235456, 0, 2.6114e-05)
+pixel_size = 0.0004
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("3_m7vcv")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Thruster"]
+root_node = NodePath("../../..")
+autoplay = "anim_thruster"
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_k6snr")
+}
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 2
+script = ExtResource("4_dbw81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("BoxShape3D_74tun")

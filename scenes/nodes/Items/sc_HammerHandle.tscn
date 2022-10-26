@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp4raaxggkgfa"]
+
+[ext_resource type="Script" path="res://src/PSXPhysicsObject/gd_PXSPhysicsObjec_main.gd" id="1_xh4ue"]
+[ext_resource type="Texture2D" uid="uid://dhh8k5euu7kcf" path="res://data/sprites/sp_handle.png" id="2_ih37d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k5n2q"]
+height = 0.5
+radius = 0.25
+
+[node name="HammerHandle" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, 0)
+script = ExtResource("1_xh4ue")
+
+[node name="HammerHandle" type="Sprite3D" parent="."]
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_ih37d")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_k5n2q")

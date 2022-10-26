@@ -16,6 +16,13 @@ var debounce:bool = false
 var offset = Vector3.ZERO
 var query = PhysicsRayQueryParameters3D.create(global_position, global_position)
 
+enum STATES{
+	ON_GROUND,
+	ON_AIR
+}
+
+var state = STATES.ON_AIR
+
 @export var physics:bool = true :
 	get: return physics
 	set(new_value):
@@ -33,14 +40,23 @@ func apply_physics():
 	var direct_state = get_world_3d().direct_space_state
 	var collision_ray = direct_state.intersect_ray(query)
 	
-	if is_on_floor():
-		object_velocity.x -= object_velocity.x * ground_friction
-		object_velocity.z -= object_velocity.z * ground_friction
-	else:
-		object_velocity.x -= object_velocity.x * air_friction
-		object_velocity.z -= object_velocity.z * air_friction
-		
-		object_velocity.y -= (gravity * (5972 * 44) * mass) / pow(1800, 2)
+	match state:
+		STATES.ON_AIR:
+			object_velocity.x -= object_velocity.x * air_friction
+			object_velocity.z -= object_velocity.z * air_friction
+			
+			object_velocity.y -= (gravity * (5972 * 44) * mass) / pow(1800, 2)
+			
+			if is_on_floor():
+				object_velocity.y = 0
+				state = STATES.ON_GROUND
+			
+		STATES.ON_GROUND:
+			object_velocity.z -= object_velocity.z * ground_friction
+			object_velocity.x -= object_velocity.x * ground_friction
+			
+			if !is_on_floor():
+				state = STATES.ON_AIR
 	
 	query.from = global_position
 	query.to = global_position + object_velocity.normalized() * 5

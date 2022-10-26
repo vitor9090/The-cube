@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://coqntotb1dwo0"]
+[gd_scene load_steps=8 format=3 uid="uid://coqntotb1dwo0"]
 
 [ext_resource type="Script" path="res://src/Player/gd_main_Player.gd" id="1_0qtxq"]
 [ext_resource type="PackedScene" uid="uid://bfavp4njpuarn" path="res://scenes/nodes/sc_Camera.tscn" id="2_vquh7"]
 [ext_resource type="AudioStream" uid="uid://d00rj3tjiec1b" path="res://data/sounds/Tile_walk_-005.wav" id="3_frfba"]
+[ext_resource type="AudioStream" uid="uid://bu5t15r4xm8ed" path="res://data/sounds/Tile_walk_-006.wav" id="4_slkf8"]
+[ext_resource type="AudioStream" uid="uid://6umrbrt8dl0u" path="res://data/sounds/Tile_walk_-009.wav" id="5_br6ws"]
+[ext_resource type="AudioStream" uid="uid://cnfr6liwuv8v7" path="res://data/sounds/Tile_walk_-016.wav" id="6_7e7s1"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8gfiv"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eo12a"]
 height = 3.0
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
@@ -12,13 +15,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_0qtxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_8gfiv")
+shape = SubResource("CapsuleShape3D_eo12a")
 
 [node name="Camera3D" parent="." instance=ExtResource("2_vquh7")]
 
 [node name="HeightCheck" type="RayCast3D" parent="."]
-target_position = Vector3(0, 2, 0)
+target_position = Vector3(0, 3, 0)
 
-[node name="SteppingSounds" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SteppingSound001" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_frfba")
+
+[node name="SteppingSound002" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_slkf8")
+
+[node name="SteppingSound003" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_br6ws")
+pitch_scale = 1.5
+
+[node name="SteppingSound004" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_7e7s1")
 pitch_scale = 1.5
