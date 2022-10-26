@@ -62,7 +62,6 @@ grow_vertical = 2
 size_flags_vertical = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

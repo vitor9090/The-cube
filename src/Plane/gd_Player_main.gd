@@ -17,6 +17,8 @@ func _physics_process(delta):
 		var output = load('res://scenes/nodes/sc_Bullet.tscn').instantiate()
 		output.position = position
 		get_tree().get_current_scene().add_child(output)
+		$AudioStreamPlayer.pitch_scale = randf_range(1.35, 1.5)
+		$AudioStreamPlayer.play(0.0)
 		#shooting_timer = 0
 	
 	if Input.is_action_pressed("player_action_shoot"):

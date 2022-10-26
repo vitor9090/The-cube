@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://g8dny0s50op1" path="res://data/sprites/sp_hit.png" id="1_f7xvm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_melrf"]
-render_priority = 10
+render_priority = 11
 transparency = 1
 no_depth_test = true
 shading_mode = 0
