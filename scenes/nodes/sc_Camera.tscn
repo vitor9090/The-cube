@@ -1,10 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfavp4njpuarn"]
+[gd_scene load_steps=9 format=3 uid="uid://bfavp4njpuarn"]
 
 [ext_resource type="Script" path="res://src/Camera3D.gd" id="1_bhdrj"]
 [ext_resource type="Shader" path="res://src/Data/gds_lensdistortion_Camera_fragment.gdshader" id="3_hoe8a"]
+[ext_resource type="Texture2D" uid="uid://b8tg44r6b6weo" path="res://data/sprites/sp_self_healthbar_out.png" id="3_iunuq"]
+[ext_resource type="Texture2D" uid="uid://cnks5imqe67go" path="res://data/sprites/sp_self_healthbar_in.png" id="4_ss3gw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ftwch"]
 shader = ExtResource("3_hoe8a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yvfk"]
+texture = ExtResource("3_iunuq")
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 4.0
+margin_bottom = 2.0
+region_rect = Rect2(0, 0, 24, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnthl"]
+texture = ExtResource("4_ss3gw")
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 12.0
+margin_bottom = 4.0
+region_rect = Rect2(0, 0, 24, 24)
+
+[sub_resource type="Theme" id="Theme_atebe"]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_3yvfk")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_qnthl")
 
 [node name="Camera3D" type="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476624, 0)
@@ -15,6 +37,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 6.0
+offset_right = 52.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -27,8 +53,27 @@ material = SubResource("ShaderMaterial_ftwch")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 492.0
-offset_bottom = 492.0
+offset_left = -52.0
+offset_top = -6.0
+offset_right = 440.0
+offset_bottom = 486.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.0
+offset_top = -351.0
+offset_right = 293.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_atebe")
+max_value = 10.0
+show_percentage = false

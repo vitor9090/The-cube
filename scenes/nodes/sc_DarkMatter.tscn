@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cann6w5hfg0ig"]
+[gd_scene load_steps=14 format=3 uid="uid://cann6w5hfg0ig"]
 
 [ext_resource type="Texture2D" uid="uid://daejl5tkvmeuh" path="res://data/sprites/sp_dark_matter.png" id="1_17p65"]
 [ext_resource type="Texture2D" uid="uid://cjs11y8vuniyk" path="res://data/sprites/sp_eye.png" id="2_6imij"]
 [ext_resource type="Script" path="res://src/DarkMatter/gd_DarkMatter_main.gd" id="2_w0a7a"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="3_drwmo"]
-[ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="5_d4ait"]
 [ext_resource type="Script" path="res://src/DarkMatter/Particles/gd_DarkParticleFalling_change_dir.gd" id="6_catv1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueowp"]
@@ -39,13 +38,11 @@ point_count = 4
 [sub_resource type="SphereShape3D" id="SphereShape3D_sknib"]
 radius = 0.606087
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_4j1ax"]
-radius = 0.637994
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtclm"]
 render_priority = 2
 transparency = 1
 shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 albedo_texture = ExtResource("1_17p65")
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -94,14 +91,6 @@ shape = SubResource("SphereShape3D_sknib")
 
 [node name="AttackTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="DamageBox" type="Area3D" parent="."]
-collision_mask = 3
-script = ExtResource("5_d4ait")
-damage = 10
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageBox"]
-shape = SubResource("SphereShape3D_4j1ax")
 
 [node name="DarkParticle" type="CPUParticles3D" parent="."]
 mesh = SubResource("PlaneMesh_lxkee")

@@ -114,3 +114,4 @@ lights_and_shadows/directional_shadow/size=512
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 global_illumination/gi/use_half_resolution=true
 shading/overrides/force_vertex_shading=true
+textures/canvas_textures/default_texture_filter=0

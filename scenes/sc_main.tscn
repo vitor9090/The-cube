@@ -53,10 +53,6 @@ material = SubResource("StandardMaterial3D_lwcck")
 script = ExtResource("2_bjl88")
 speed = Vector3(-3, 0, 1)
 
-[node name="Camera3D" parent="." instance=ExtResource("2_ywwcn")]
-transform = Transform3D(-1.05367e-07, -0.707107, 0.707107, -1.05367e-07, 0.707107, 0.707107, -1, 0, -1.49012e-07, 2, 18, 0)
-current = true
-
 [node name="Bullet" parent="." instance=ExtResource("7_h45uy")]
 
 [node name="ExplosionParticles" parent="." instance=ExtResource("11_7j30p")]
@@ -69,3 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 16.5, -1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ygk3h")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_ywwcn")]
+transform = Transform3D(-7.45058e-08, -0.866025, 0.5, -1.29048e-07, 0.5, 0.866025, -1, 9.9476e-14, -1.49011e-07, 1, 20, 0)
+current = true

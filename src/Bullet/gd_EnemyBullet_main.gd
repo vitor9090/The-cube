@@ -39,5 +39,5 @@ func _process(delta):
 	var function = Callable(self, bullet_states[bullet_state]['pattern'])
 	function.call(delta, bullet_states[bullet_state]['speed'])
 	
-	if position.x > get_viewport().get_camera_3d().position.x:
+	if position.x > get_viewport().get_camera_3d().position.x + 10:
 		queue_free()
