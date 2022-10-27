@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqbtnqeg2xk74"]
+[gd_scene load_steps=18 format=3 uid="uid://dqbtnqeg2xk74"]
 
 [ext_resource type="Script" path="res://src/Plane/gd_Player_main.gd" id="1_56ao5"]
 [ext_resource type="ArrayMesh" uid="uid://cxfrtaux444c0" path="res://data/objects/plane.obj" id="2_wtdit"]
@@ -7,10 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://bjaqpobkerluf" path="res://data/sounds/Single_shot.wav" id="5_6sqap"]
 [ext_resource type="PackedScene" uid="uid://dx3vodsk81l8s" path="res://scenes/nodes/Particles/sc_WaterSplash.tscn" id="6_07k3h"]
 [ext_resource type="Texture2D" uid="uid://tjebihvs7eum" path="res://data/sprites/sp_water_splash_center.png" id="7_ir7x6"]
+[ext_resource type="PackedScene" uid="uid://clvl7q1jhar0i" path="res://scenes/nodes/Sounds/sc_Explosion.tscn" id="8_44bby"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej1nf"]
 shading_mode = 0
-albedo_color = Color(0.866667, 0.741176, 0, 1)
+albedo_color = Color(0.992157, 1, 0.952941, 1)
 
 [sub_resource type="Animation" id="Animation_sqe7a"]
 length = 0.001
@@ -75,6 +76,9 @@ _data = {
 "anim_thruster": SubResource("Animation_q0mr0")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktw8n"]
+size = Vector3(0.00525773, 0.00295488, 0.00332189)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_74tun"]
 size = Vector3(0.007, 0.002, 0.002)
 
@@ -133,8 +137,18 @@ libraries = {
 "": SubResource("AnimationLibrary_k6snr")
 }
 
+[node name="HurtBox" type="Area3D" parent="Thruster"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.000542772, 0, 0)
+collision_mask = 4
+script = ExtResource("4_dbw81")
+max_damage_taken = 999999999999999
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Thruster/HurtBox"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00410408, 0, 0)
+shape = SubResource("BoxShape3D_ktw8n")
+
 [node name="HurtBox" type="Area3D" parent="."]
-collision_layer = 2
+collision_mask = 22
 script = ExtResource("4_dbw81")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
@@ -162,3 +176,5 @@ initial_velocity_max = 0.2
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_a0lx2")
+
+[node name="ExplosionSFX" parent="." instance=ExtResource("8_44bby")]

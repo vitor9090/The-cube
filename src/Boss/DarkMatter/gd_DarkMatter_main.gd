@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var timer = 0
 var timer_max = 0.2
+var kit_spawned:bool = false
 
 @export var attack_order:Array[Dictionary] = [
 	{'attack': 'straight', 'time': 2, 'rate': 1},
@@ -64,6 +65,13 @@ func _on_damage_taken(new_value):
 	$MainSprite.modulate = Color(0, 0, 0, 1)
 	
 	if new_value >= 100:
+		if not kit_spawned:
+			var output = load("res://scenes/nodes/sc_FixKit.tscn").instantiate()
+			output.position = global_position
+			get_tree().get_current_scene().add_child(output)
+			print(true)
+			kit_spawned = true
+		
 		$HurtBox.invincible = true
 		$MainSprite.modulate = Color(0.5, 0, 0, 1)
 

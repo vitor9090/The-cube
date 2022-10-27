@@ -7,6 +7,7 @@ render_priority = 12
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("1_buv57")
+texture_filter = 0
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -17,7 +18,7 @@ material = SubResource("StandardMaterial3D_fr3hg")
 orientation = 2
 
 [sub_resource type="Curve" id="Curve_in8uo"]
-_data = [Vector2(0, 0), 0.0, 29.6376, 0, 0, Vector2(0.127787, 0), -45.7831, 0.0, 0, 0]
+_data = [Vector2(0, 0.0236214), 0.0, 110.945, 0, 0, Vector2(0.0677528, 0), -51.414, 0.0, 0, 0]
 point_count = 2
 
 [node name="ExplosionLine" type="CPUParticles3D"]
@@ -31,6 +32,6 @@ emission_shape = 4
 emission_points = PackedVector3Array(0, 0, 0, -0.5, 0, 0, -1, 0, 0, -1.5, 0, 0, -2, 0, 0, -2.5, 0, 0, -3, 0, 0, -3.5, 0, 0, -4, 0, 0, -4.5, 0, 0, -5, 0, 0)
 gravity = Vector3(0, 0, 0)
 angle_max = 180.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
+scale_amount_min = 0.4
+scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_in8uo")

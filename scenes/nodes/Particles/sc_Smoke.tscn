@@ -25,7 +25,7 @@ point_count = 4
 
 [node name="Smoke" type="CPUParticles3D"]
 emitting = false
-amount = 4
+amount = 1
 one_shot = true
 explosiveness = 1.0
 mesh = SubResource("PlaneMesh_rcj6t")

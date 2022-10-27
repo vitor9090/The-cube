@@ -86,6 +86,7 @@ scale_amount_max = 0.03
 scale_amount_curve = SubResource("Curve_leaxu")
 
 [node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 2
 script = ExtResource("3_drwmo")
 max_damage_taken = 500
 

@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cy6b64h1f5bsg" path="res://data/sprites/sp_explosion.png" id="1_xw4nn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1wki"]
-render_priority = 9
+render_priority = 11
 transparency = 1
 depth_draw_mode = 1
 no_depth_test = true
 shading_mode = 0
 albedo_texture = ExtResource("1_xw4nn")
+texture_filter = 0
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -32,4 +33,6 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
 angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_yb4b3")

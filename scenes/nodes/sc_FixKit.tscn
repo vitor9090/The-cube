@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://cv3cbapbfnn58"]
+
+[ext_resource type="Texture2D" uid="uid://ddk3n6xrvjh81" path="res://data/sprites/sp_fix_kit.png" id="1_yhsgn"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="2_3o3pd"]
+[ext_resource type="Script" path="res://src/FixKit/gd_FixKit_move.gd" id="2_p7lki"]
+[ext_resource type="Texture2D" uid="uid://v1w01hm5yokw" path="res://data/sprites/sp_shine.png" id="4_kyqg6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5w2de"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4i3l"]
+render_priority = 12
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = ExtResource("4_kyqg6")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p43bs"]
+material = SubResource("StandardMaterial3D_w4i3l")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_3mkq7"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), -1599.97, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u1mc1"]
+_data = [Vector2(0, 0), 0.0, 9.80359, 0, 0, Vector2(0.337907, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="FixKit" type="Sprite3D"]
+pixel_size = 0.05
+billboard = 1
+double_sided = false
+texture_filter = 0
+render_priority = 13
+texture = ExtResource("1_yhsgn")
+script = ExtResource("2_p7lki")
+
+[node name="DamageBox" type="Area3D" parent="."]
+collision_layer = 16
+script = ExtResource("2_3o3pd")
+damage = -5
+destroy_after_damage = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageBox"]
+shape = SubResource("BoxShape3D_5w2de")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 1
+local_coords = true
+mesh = SubResource("PlaneMesh_p43bs")
+gravity = Vector3(0, 0, 0)
+angle_min = -0.2
+angle_max = 0.1
+angle_curve = SubResource("Curve_3mkq7")
+scale_amount_min = 0.3
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_u1mc1")

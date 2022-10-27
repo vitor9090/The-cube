@@ -15,6 +15,13 @@ var damage_taken = 0:
 				var output = load("res://scenes/nodes/Particles/sc_ExplosionParticles.tscn").instantiate()
 				output.position = global_position
 				output.emitting = true
+				
+				var sound = load("res://scenes/nodes/Sounds/sc_Explosion.tscn").instantiate()
+				
 				get_tree().get_current_scene().add_child(output)
+				get_tree().get_current_scene().add_child(sound)
+				
+				sound.play()
+				
 				get_parent().queue_free()
 @export var max_damage_taken = 10

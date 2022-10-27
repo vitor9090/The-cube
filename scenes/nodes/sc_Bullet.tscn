@@ -47,5 +47,7 @@ scale_amount_max = 0.04
 scale_amount_curve = SubResource("Curve_fxqu6")
 
 [node name="DamageBox" parent="." instance=ExtResource("4_ml3eb")]
+collision_layer = 8
+collision_mask = 34
 damage = 2
 destroy_after_damage = false

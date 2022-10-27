@@ -54,7 +54,7 @@ func _physics_process(delta):
 	$Plane.rotation.x = lerp($Plane.rotation.z, -input_vector.x, 0.5)
 	$Thruster.rotation.y = lerp(rotation.z, -input_vector.x, 0.5)
 	
-	$Thruster.scale = lerp($Thruster.scale, (start_scale + (Vector3.ONE * input_vector.y)) / 30, 0.1)
+	$Thruster.scale = lerp($Thruster.scale, (Vector3.ONE * 2 + (Vector3.ONE * input_vector.y) / 2), 0.1)
 	
 	set_velocity(_velocity)
 	move_and_slide()
