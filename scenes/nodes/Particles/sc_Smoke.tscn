@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi4eyfmeqdn8s"]
+
+[ext_resource type="Texture2D" uid="uid://cjwgobalytw7a" path="res://data/sprites/sp_smoke.png" id="1_62xdg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mp4y"]
+render_priority = 14
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = ExtResource("1_62xdg")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rcj6t"]
+material = SubResource("StandardMaterial3D_4mp4y")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_x5gdw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.119211, 1), 0.0, 0.0, 0, 0, Vector2(0.475128, 1), 0.0, 0.0, 0, 0, Vector2(0.831046, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Smoke" type="CPUParticles3D"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("PlaneMesh_rcj6t")
+direction = Vector3(1, 0, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.5
+initial_velocity_max = 2.0
+linear_accel_min = -2.0
+linear_accel_max = -2.0
+angle_max = 90.0
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_x5gdw")

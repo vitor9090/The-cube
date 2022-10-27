@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxrdl77y8d6pw"]
+[gd_scene load_steps=14 format=3 uid="uid://bxrdl77y8d6pw"]
 
 [ext_resource type="Texture2D" uid="uid://d13xs4xg0ry0t" path="res://data/sprites/sp_water_foam_top.png" id="1_hjl0x"]
 [ext_resource type="PackedScene" uid="uid://dqbtnqeg2xk74" path="res://scenes/nodes/sc_Shiptscn.tscn" id="1_wh4nw"]
 [ext_resource type="Script" path="res://src/Sprite/gd_Sprite3D_increase_offse.gd" id="2_bjl88"]
 [ext_resource type="PackedScene" uid="uid://bfavp4njpuarn" path="res://scenes/nodes/sc_Camera.tscn" id="2_ywwcn"]
-[ext_resource type="PackedScene" uid="uid://cd58h7pay1cw2" path="res://scenes/nodes/sc_Bullet.tscn" id="7_h45uy"]
+[ext_resource type="PackedScene" uid="uid://daaogs54i4bon" path="res://scenes/nodes/sc_Bullet.tscn" id="7_h45uy"]
 [ext_resource type="PackedScene" uid="uid://bqui3mr5y882n" path="res://scenes/nodes/Particles/sc_Hit.tscn" id="8_qio5g"]
 [ext_resource type="PackedScene" uid="uid://ba7anl3y44isj" path="res://scenes/nodes/sc_Boss.tscn" id="8_t1qob"]
+[ext_resource type="PackedScene" uid="uid://bi4eyfmeqdn8s" path="res://scenes/nodes/Particles/sc_Smoke.tscn" id="9_5duon"]
 [ext_resource type="PackedScene" uid="uid://6kc7mxeldb7w" path="res://scenes/nodes/Particles/sc_ExplosionParticles.tscn" id="11_7j30p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uwl6w"]
@@ -14,30 +15,30 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a2oc"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.760784, 0.760784, 0.760784, 1)
+albedo_color = Color(0.623529, 0.623529, 0.623529, 1)
 albedo_texture = ExtResource("1_hjl0x")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwcck"]
 transparency = 1
-albedo_color = Color(0.172549, 0, 0.545098, 1)
+albedo_color = Color(0.560784, 0.560784, 0.560784, 1)
 albedo_texture = ExtResource("1_hjl0x")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="Environment" id="Environment_ygk3h"]
 background_mode = 1
-background_color = Color(0.290196, 0.290196, 0.290196, 1)
+background_color = Color(0.321569, 0.321569, 0.152941, 1)
 tonemap_mode = 3
 adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_contrast = 0.8
-adjustment_saturation = 1.2
+adjustment_brightness = 0.9
+adjustment_contrast = 1.2
+adjustment_saturation = 2.0
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_wh4nw")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_wh4nw")]
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 15.5, 0)
@@ -70,3 +71,6 @@ environment = SubResource("Environment_ygk3h")
 [node name="Camera3D" parent="." instance=ExtResource("2_ywwcn")]
 transform = Transform3D(-7.45058e-08, -0.866025, 0.5, -1.29048e-07, 0.5, 0.866025, -1, 9.9476e-14, -1.49011e-07, 1, 20, 0)
 current = true
+
+[node name="Smoke" parent="." instance=ExtResource("9_5duon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 16, 1)

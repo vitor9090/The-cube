@@ -10,5 +10,5 @@ void fragment(){
 	
 	// new_screen_texture.rg = vec2(new_screen_texture.b);
 	
-	COLOR = round(new_screen_texture * vec4(2.0, 2.0, 15.0, 1.0)) / vec4(2.0, 2.0, 15.0, 1.0);
+	COLOR = round(new_screen_texture * vec4(15.0, 15.0, 15.0, 1.0)) / vec4(15.0, 15.0, 15.0, 1.0);
 }

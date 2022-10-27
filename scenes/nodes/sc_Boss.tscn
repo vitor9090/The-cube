@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba7anl3y44isj"]
+[gd_scene load_steps=3 format=3 uid="uid://ba7anl3y44isj"]
 
-[ext_resource type="PackedScene" uid="uid://cann6w5hfg0ig" path="res://scenes/nodes/sc_DarkMatter.tscn" id="1_kjfpr"]
+[ext_resource type="Script" path="res://src/Boss/gd_Boss_main.gd" id="1_2ay0b"]
+[ext_resource type="PackedScene" uid="uid://caoj6s46fmcaf" path="res://scenes/nodes/sc_DarkMatter.tscn" id="1_kjfpr"]
 
 [node name="Boss" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 16, 0)
+script = ExtResource("1_2ay0b")
 
 [node name="DarkMatter" parent="." instance=ExtResource("1_kjfpr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -16,6 +18,11 @@ attack_order = [{
 }, {
 "attack": "criss-cross",
 "time": 4
+}]
+attack_order_phase_2 = [{
+"attack": "missile",
+"rate": 5.0,
+"time": 10.0
 }]
 
 [node name="DarkMatter2" parent="." instance=ExtResource("1_kjfpr")]
@@ -30,16 +37,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3)
 [node name="DarkMatter3" parent="." instance=ExtResource("1_kjfpr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
-[node name="DarkMatter4" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-attack_order = [{
-"attack": "straight",
-"time": 10
-}]
-
-[node name="DarkMatter6" parent="." instance=ExtResource("1_kjfpr")]
+[node name="DarkMatter9" parent="." instance=ExtResource("1_kjfpr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 attack_order = [{
 "attack": "straight",
-"time": 10
+"rate": 1.0,
+"time": 2
+}, {
+"attack": "middle",
+"time": 10.0
+}]
+
+[node name="DarkMatter10" parent="." instance=ExtResource("1_kjfpr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+attack_order = [{
+"attack": "straight",
+"rate": 1.0,
+"time": 2
+}, {
+"attack": "middle",
+"time": 10.0
 }]

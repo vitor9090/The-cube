@@ -1,15 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://cann6w5hfg0ig"]
+[gd_scene load_steps=20 format=3 uid="uid://caoj6s46fmcaf"]
 
 [ext_resource type="Texture2D" uid="uid://daejl5tkvmeuh" path="res://data/sprites/sp_dark_matter.png" id="1_17p65"]
 [ext_resource type="Texture2D" uid="uid://cjs11y8vuniyk" path="res://data/sprites/sp_eye.png" id="2_6imij"]
-[ext_resource type="Script" path="res://src/DarkMatter/gd_DarkMatter_main.gd" id="2_w0a7a"]
+[ext_resource type="Script" path="res://src/Boss/DarkMatter/gd_DarkMatter_main.gd" id="2_ay2pm"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="3_drwmo"]
-[ext_resource type="Script" path="res://src/DarkMatter/Particles/gd_DarkParticleFalling_change_dir.gd" id="6_catv1"]
+[ext_resource type="Script" path="res://src/Boss/DarkMatter/Particles/gd_DarkParticleFalling_change_dir.gd" id="5_ls72o"]
+[ext_resource type="AudioStream" uid="uid://b27rrlkgeyqs8" path="res://data/sounds/shorter_explosion_04.wav" id="6_quhfb"]
+[ext_resource type="AudioStream" uid="uid://dsiyp120ydr8a" path="res://data/sounds/shorter_explosion_05.wav" id="7_2mgwc"]
+[ext_resource type="AudioStream" uid="uid://ce705wd73lrjj" path="res://data/sounds/shorter_explosion_01.wav" id="8_je6eu"]
+[ext_resource type="AudioStream" uid="uid://c24xsmjj0d8kr" path="res://data/sounds/shorter_explosion_02.wav" id="9_ddvqn"]
+[ext_resource type="AudioStream" uid="uid://ph80x0fuh87b" path="res://data/sounds/shorter_explosion_07.wav" id="10_0752j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueowp"]
 render_priority = 11
 transparency = 1
-blend_mode = 1
 no_depth_test = true
 shading_mode = 0
 specular_mode = 2
@@ -57,15 +61,12 @@ orientation = 2
 _data = [Vector2(0.00343033, 0), 0.0, 9.96011, 0, 0, Vector2(0.200686, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.33858, 0.0, 0, 0]
 point_count = 3
 
-[node name="DarkMatter" type="Sprite3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_1cv14"]
+radius = 1.0
+
+[node name="DarkMatter" type="CharacterBody3D" groups=["Boss"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 16, 0)
-modulate = Color(0, 0, 0, 1)
-pixel_size = 0.04
-billboard = 1
-no_depth_test = true
-render_priority = 10
-texture = ExtResource("1_17p65")
-script = ExtResource("2_w0a7a")
+script = ExtResource("2_ay2pm")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 10
@@ -86,12 +87,12 @@ scale_amount_curve = SubResource("Curve_leaxu")
 
 [node name="HurtBox" type="Area3D" parent="."]
 script = ExtResource("3_drwmo")
-max_damage_taken = 300
+max_damage_taken = 500
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("SphereShape3D_sknib")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="PatternTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="DarkParticle" type="CPUParticles3D" parent="."]
@@ -109,6 +110,38 @@ emission_sphere_radius = 1.0
 gravity = Vector3(5, -5, 0)
 scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_qh1l5")
-script = ExtResource("6_catv1")
+script = ExtResource("5_ls72o")
 
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[node name="HitSounds" type="Node" parent="."]
+
+[node name="MissileHit1" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource("6_quhfb")
+
+[node name="MissileHit2" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource("7_2mgwc")
+
+[node name="MissileHit3" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource("8_je6eu")
+
+[node name="MissileHit4" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource("9_ddvqn")
+
+[node name="MissileHit5" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource("10_0752j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1cv14")
+
+[node name="MainSprite" type="Sprite3D" parent="."]
+modulate = Color(0, 0, 0, 1)
+pixel_size = 0.05
+billboard = 1
+render_priority = 10
+texture = ExtResource("1_17p65")
+
+[node name="BulletRate" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="PatternTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="BulletRate" to="." method="_on_bullet_rate_timeout"]

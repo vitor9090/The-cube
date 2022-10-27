@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyuns0i8t8jp2"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgvoq43m80phb" path="res://data/objects/missile.obj" id="1_hclsh"]
+[ext_resource type="Script" path="res://src/Boss/gd_Missile_main.gd" id="2_v05we"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="3_2gott"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="4_6rtgq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ailo8"]
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewio7"]
+size = Vector3(8, 2, 2)
+
+[node name="Missile" type="MeshInstance3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ailo8")
+mesh = ExtResource("1_hclsh")
+script = ExtResource("2_v05we")
+
+[node name="HurtBox" type="Area3D" parent="."]
+script = ExtResource("3_2gott")
+max_damage_taken = 9999
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("BoxShape3D_ewio7")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(-100, 0, 0)
+
+[node name="DamageBox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_6rtgq")
+damage = 5
+destroy_after_damage = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageBox"]
+shape = SubResource("BoxShape3D_ewio7")

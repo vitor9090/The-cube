@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx3vodsk81l8s"]
+
+[ext_resource type="Texture2D" uid="uid://b353yrj1uehgg" path="res://data/sprites/sp_water_splash_single.png" id="1_4vcwx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3a6n"]
+render_priority = 12
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.721569, 0.721569, 0.721569, 1)
+albedo_texture = ExtResource("1_4vcwx")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e4e4a"]
+material = SubResource("StandardMaterial3D_a3a6n")
+center_offset = Vector3(0, 1, 0)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_6748l"]
+_data = [Vector2(0, 0), 0.0, 30.3856, 0, 0, Vector2(0.204974, 1), 0.0, 0.0, 0, 0, Vector2(0.839622, 0), -4.04649, 0.0, 0, 0]
+point_count = 3
+
+[node name="WaterSplash" type="CPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, -0.00999999, 0)
+amount = 20
+mesh = SubResource("PlaneMesh_e4e4a")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.2
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_6748l")
+scale_curve_z = null
