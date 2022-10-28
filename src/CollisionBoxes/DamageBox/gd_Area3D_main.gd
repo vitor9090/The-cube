@@ -17,6 +17,10 @@ func _on_DamageBox_area_entered(area):
 		get_tree().get_current_scene().add_child(output)
 		
 		if not area.invincible:
+			var sound = load('res://scenes/nodes/Sounds/sc_Hit.tscn').instantiate()
+			get_tree().get_current_scene().add_child(sound)
+			sound.play()
+				
 			area.damage_taken += damage
 			emit_signal('did_damage')
 			if destroy_after_damage:
@@ -26,3 +30,7 @@ func _on_DamageBox_area_entered(area):
 			part.position = global_position
 			part.emitting = true
 			get_tree().get_current_scene().add_child(part)
+
+			var sound = load('res://scenes/nodes/Sounds/sc_Ricochet.tscn').instantiate()
+			sound.pitch_scale = randf_range(1, 1.5)
+			get_tree().get_current_scene().add_child(sound)

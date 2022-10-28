@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://connf7b7jrl1e"]
-
-[ext_resource type="Script" path="res://src/PSXPhysicsObject/gd_PXSPhysicsObjec_main.gd" id="1_hf0nq"]
-
-[node name="PSXPhysicsObject" type="CharacterBody3D"]
-script = ExtResource("1_hf0nq")

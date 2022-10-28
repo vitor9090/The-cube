@@ -3,21 +3,23 @@ extends CharacterBody3D
 var timer = 0
 var timer_max = 0.2
 var kit_spawned:bool = false
+@onready var shooting_sound = $Shooting
 
 @export var attack_order:Array[Dictionary] = [
 	{'attack': 'straight', 'time': 2, 'rate': 1},
 	{'attack': 'criss-cross', 'time': 2, 'rate': 0.2},
-	{'attack': 'middle', 'time': 10, 'rate': 0.2},
+	{'attack': 'middle', 'time': 10, 'rate': 0.5},
 	{'attack': 'spiral', 'time': 10, 'rate': 0.2},
 	{'attack': 'stairs', 'time': 3, 'rate': 0.2}
 ]
 
 @export var attack_order_phase_2:Array[Dictionary] = [
-	{'attack': 'up_and_down', 'time': 3},
-	{'attack': 'criss-cross', 'time': 1},
-	{'attack': 'straight', 'time': 1},
-	{'attack': 'straight', 'time': 2, 'rate': 1},
-	{'attack': 'straight', 'time': 2, 'rate': 1}
+	{'attack': 'up_and_down', 'time': 5, 'rate': 0.5},
+	{'attack': 'criss-cross', 'time': 2, 'rate': 0.5},
+	{'attack': 'straight', 'time': 2, 'rate': 0.5},
+	{'attack': 'straight', 'time': 5, 'rate': 0.5},
+	{'attack': 'straight', 'time': 0.5, 'rate': 0.5},
+	{'attack': 'follow', 'time': 5, 'rate': 1}
 ]
 
 var current_attack = 0
@@ -54,8 +56,6 @@ func _on_attack_timer_timeout():
 		current_attack = 0
 
 func _on_damage_taken(new_value):
-	# min = 0, max = 100, mini = 0, maxi = 1, new_value
-	
 	$HitSounds.get_children()[randi() % $HitSounds.get_children().size()].play(0.0)
 	
 	$MainSprite.modulate = Color(0.5, 0.5, 0.5, 1)
@@ -69,7 +69,6 @@ func _on_damage_taken(new_value):
 			var output = load("res://scenes/nodes/sc_FixKit.tscn").instantiate()
 			output.position = global_position
 			get_tree().get_current_scene().add_child(output)
-			print(true)
 			kit_spawned = true
 		
 		$HurtBox.invincible = true
@@ -84,3 +83,4 @@ func _on_bullet_rate_timeout():
 		output.bullet_state = attack_order[current_attack].get('attack', 'straight')
 		attack_timer.wait_time = attack_order[current_attack].get('time', 1)
 		get_tree().get_current_scene().add_child(output)
+		shooting_sound.play()

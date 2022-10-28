@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://o7s3os1c51qv"]
+
+[ext_resource type="Texture2D" uid="uid://bry1fpgrijwuw" path="res://data/sprites/sp_enemy_bullet.png" id="1_bobl7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t25je"]
+render_priority = 10
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_bobl7")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_epq3u"]
+material = SubResource("StandardMaterial3D_t25je")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_ch7uq"]
+min_value = -10.0
+max_value = 10.0
+_data = [Vector2(0.273585, 0.446198), 0.0, 0.238474, 0, 0, Vector2(0.337907, -3.49081), 0.0527629, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_txw70"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Flare" type="CPUParticles3D"]
+amount = 20
+mesh = SubResource("PlaneMesh_epq3u")
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("Curve_ch7uq")
+scale_amount_min = 0.05
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_txw70")

@@ -1,7 +1,10 @@
-extends Sprite3D
+extends CharacterBody3D
 
-var speed = 2
 var missile_spawned:bool = false
+
+var player = null
+var player_pos_start = Vector3.ZERO
+var can = false
 
 func straight(delta:float, speed:int):
 	position += Vector3(speed, 0, 0) * delta
@@ -26,7 +29,13 @@ func stairs(delta:float, speed:int):
 func up_and_down(delta:float, speed:int):
 	position.x += speed * delta
 	position.y += sin(position.x) * speed * delta
-	
+
+func follow(delta:float, speed:int):
+	var output = load("res://scenes/nodes/sc_FastBullet.tscn").instantiate()
+	output.position = position
+	get_tree().get_current_scene().add_child(output)
+	queue_free()	
+
 func missile(delta:float, speed:int):
 	var output = load("res://scenes/nodes/sc_Missile.tscn").instantiate()
 	output.position = position
@@ -46,13 +55,16 @@ func _ready():
 		'spiral': {'speed': 1, 'pattern': 'spiral'},
 		'stairs': {'speed': 2, 'pattern': 'stairs'},
 		'up_and_down': {'speed': 2, 'pattern': 'up_and_down'},
-		'missile': {'speed': 0, 'pattern': 'missile'}
+		'missile': {'speed': 0, 'pattern': 'missile'},
+		'follow': {'speed': 5, 'pattern': 'follow'}
 	}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var function = Callable(self, bullet_states[bullet_state]['pattern'])
 	function.call(delta, bullet_states[bullet_state]['speed'])
+	
+	move_and_slide()
 	
 	if position.x > get_viewport().get_camera_3d().position.x + 10:
 		queue_free()

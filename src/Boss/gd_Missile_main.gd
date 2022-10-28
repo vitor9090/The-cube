@@ -1,6 +1,7 @@
-extends MeshInstance3D
+extends CharacterBody3D
 
 var player = null
+@onready var model = $MissileModel
 
 func _ready():
 	$HurtBox.took_damage.connect(_on_damage_taken)
@@ -11,11 +12,13 @@ func _ready():
 func _process(delta):
 	if is_instance_valid(player):
 		var distance_to_player = Vector2(
-			position.x - player.position.x,
-			position.z - player.position.z
+			global_position.x - player.position.x,
+			global_position.z - player.position.z
 		)
 		
 		var angle_to_player = atan2(distance_to_player.x, distance_to_player.y)
+		
+		model.rotation.y = angle_to_player - (PI / 2)
 		
 		position.x += -sin(angle_to_player) * delta
 		position.z += -cos(angle_to_player) * delta

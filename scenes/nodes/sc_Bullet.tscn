@@ -32,7 +32,7 @@ render_priority = 4
 texture = ExtResource("1_6uwgl")
 script = ExtResource("2_jff7v")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="Flare" type="CPUParticles3D" parent="."]
 amount = 10
 mesh = SubResource("PlaneMesh_2j2ne")
 spread = 20.0

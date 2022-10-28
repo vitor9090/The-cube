@@ -44,8 +44,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Th evube"
-run/main_scene="res://scenes/sc_main.tscn"
+config/name="Infinite Sea (Dev/Debug build)"
+run/main_scene="res://scenes/sc_Menul.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

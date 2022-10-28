@@ -7,8 +7,8 @@ var friction:float = 0.85
 var shooting_timer = 0
 var shooting_timer_max = 0.1
 
-var invincibility = false
-var start_scale = scale
+
+@onready var shooting_sound = $Shooting
 
 func _physics_process(delta):
 	var input_vector = Vector2(Input.get_axis("player_move_left", 'player_move_right'), Input.get_axis("player_move_backwards", 'player_move_foward'))
@@ -19,8 +19,8 @@ func _physics_process(delta):
 		var output = load('res://scenes/nodes/sc_Bullet.tscn').instantiate()
 		output.position = position
 		get_tree().get_current_scene().add_child(output)
-		$AudioStreamPlayer.pitch_scale = randf_range(1.35, 1.5)
-		$AudioStreamPlayer.play(0.0)
+		shooting_sound.pitch_scale = randf_range(1.35, 1.5)
+		shooting_sound.play(0.0)
 		#shooting_timer = 0
 	
 	if Input.is_action_pressed("player_action_shoot"):
@@ -31,17 +31,16 @@ func _physics_process(delta):
 			var output = load('res://scenes/nodes/sc_Bullet.tscn').instantiate()
 			output.position = position
 			get_tree().get_current_scene().add_child(output)
-			$AudioStreamPlayer.pitch_scale = randf_range(1.35, 1.5)
-			$AudioStreamPlayer.play(0.0)
+			shooting_sound.pitch_scale = randf_range(1.35, 1.5)
+			shooting_sound.play(0.0)
 			shooting_timer = 0
 			
 	if Input.is_action_just_released('player_action_shoot'):
 		shooting_timer = 0
 		
 	if Input.is_key_pressed(KEY_I) && Input.is_key_pressed(KEY_N) && Input.is_key_pressed(KEY_V):
-		if !invincibility:
-			$HurtBox.max_damage_taken = 9999
-			invincibility = true
+			$HurtBox.invincible = true
+
 	_velocity.z *= friction
 	_velocity.x *= friction
 	

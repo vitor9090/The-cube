@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdytkhgpr0ae5"]
+
+[ext_resource type="Texture2D" uid="uid://drqqnew7lv16x" path="res://data/sprites/sp_fast_bullet.png" id="1_8ixy3"]
+[ext_resource type="Script" path="res://src/Boss/gd_FastBullet_main.gd" id="1_uwj6t"]
+[ext_resource type="PackedScene" uid="uid://o7s3os1c51qv" path="res://scenes/nodes/Particles/sc_Flare.tscn" id="2_sdyww"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="4_qsbr3"]
+[ext_resource type="PackedScene" uid="uid://bvatha8vmfgi7" path="res://scenes/nodes/Particles/sc_Sparkle.tscn" id="5_sh6fb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yru63"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="FastBullet" type="CharacterBody3D"]
+script = ExtResource("1_uwj6t")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+flip_v = true
+pixel_size = 0.05
+billboard = 1
+texture_filter = 0
+render_priority = 13
+texture = ExtResource("1_8ixy3")
+
+[node name="Flare" parent="." instance=ExtResource("2_sdyww")]
+lifetime = 0.5
+direction = Vector3(0, 0, 0)
+
+[node name="DamageBox" type="Area3D" parent="."]
+collision_layer = 4
+script = ExtResource("4_qsbr3")
+damage = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageBox"]
+shape = SubResource("BoxShape3D_yru63")
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Sparkle" parent="." instance=ExtResource("5_sh6fb")]
+top_level = true
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://co5imc1lreiav"]
+
+[ext_resource type="AudioStream" uid="uid://cyubgu8bobtjq" path="res://data/sounds/ricochet_04.wav" id="1_lipob"]
+
+[node name="Ricochet" type="AudioStreamPlayer"]
+stream = ExtResource("1_lipob")
+autoplay = true

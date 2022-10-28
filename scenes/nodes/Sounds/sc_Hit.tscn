@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vgicqcwjt540"]
+
+[ext_resource type="AudioStream" uid="uid://bdto1lus84gna" path="res://data/sounds/spaceship_hit_highpitch.wav" id="1_s5d06"]
+
+[node name="HitSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_s5d06")
+volume_db = -5.0
+pitch_scale = 1.5
