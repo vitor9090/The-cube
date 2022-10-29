@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://o7s3os1c51qv"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Texture2D" uid="uid://bry1fpgrijwuw" path="res://data/sprites/sp_enemy_bullet.png" id="1_bobl7"]
 

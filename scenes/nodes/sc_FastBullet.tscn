@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdytkhgpr0ae5"]
+[gd_scene load_steps=7 format=3 uid="uid://q5kb100t2ksj"]
 
 [ext_resource type="Texture2D" uid="uid://drqqnew7lv16x" path="res://data/sprites/sp_fast_bullet.png" id="1_8ixy3"]
 [ext_resource type="Script" path="res://src/Boss/gd_FastBullet_main.gd" id="1_uwj6t"]
-[ext_resource type="PackedScene" uid="uid://o7s3os1c51qv" path="res://scenes/nodes/Particles/sc_Flare.tscn" id="2_sdyww"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_Flare.tscn" id="2_sdyww"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="4_qsbr3"]
-[ext_resource type="PackedScene" uid="uid://bvatha8vmfgi7" path="res://scenes/nodes/Particles/sc_Sparkle.tscn" id="5_sh6fb"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_Sparkle.tscn" id="5_sh6fb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yru63"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -16,6 +16,7 @@ script = ExtResource("1_uwj6t")
 flip_v = true
 pixel_size = 0.05
 billboard = 1
+no_depth_test = true
 texture_filter = 0
 render_priority = 13
 texture = ExtResource("1_8ixy3")

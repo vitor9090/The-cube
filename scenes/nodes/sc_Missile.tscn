@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyuns0i8t8jp2"]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://src/Boss/gd_Missile_main.gd" id="2_v05we"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="3_2gott"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="4_6rtgq"]
 [ext_resource type="Texture2D" uid="uid://dca2eigjcb8a7" path="res://data/sprites/sp_thruster.png" id="5_c48h5"]
 [ext_resource type="PackedScene" uid="uid://c63fphppmg6ky" path="res://data/gltf/missile.gltf" id="5_l18m1"]
-[ext_resource type="PackedScene" uid="uid://o7s3os1c51qv" path="res://scenes/nodes/Particles/sc_Flare.tscn" id="6_d6xm6"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_Flare.tscn" id="6_d6xm6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewio7"]
 size = Vector3(8, 2, 2)

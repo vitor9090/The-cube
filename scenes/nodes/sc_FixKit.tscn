@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv3cbapbfnn58"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Texture2D" uid="uid://ddk3n6xrvjh81" path="res://data/sprites/sp_fix_kit.png" id="1_yhsgn"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/DamageBox/gd_Area3D_main.gd" id="2_3o3pd"]
 [ext_resource type="Script" path="res://src/FixKit/gd_FixKit_move.gd" id="2_p7lki"]
-[ext_resource type="PackedScene" uid="uid://bvatha8vmfgi7" path="res://scenes/nodes/Particles/sc_Sparkle.tscn" id="4_vj6jg"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_Sparkle.tscn" id="4_vj6jg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5w2de"]
 

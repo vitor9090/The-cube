@@ -28,9 +28,13 @@ func _ready():
 	popup.add_submenu_item('Open Recent', 'Open Recent', 1)
 	
 func _on_popup_pressed(id):
-	if id == 4:
+	$AudioStreamPlayer.play()
+	
+	if id == 1:
 		get_tree().quit(0)
 	
 func _on_subpopup_pressed(id):
+	$AudioStreamPlayer.play()
 	if id == 1:
+		DisplayServer.window_set_title(open_recent.get_item_text(id))
 		get_tree().change_scene_to_file('res://scenes/sc_main.tscn')

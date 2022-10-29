@@ -1,0 +1,67 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dxgphhx27pauy"]
+
+[ext_resource type="Texture2D" uid="uid://cfywow0v4psxt" path="res://data/sprites/sp_button.png" id="1_retjx"]
+[ext_resource type="FontFile" uid="uid://vaughx2sxh45" path="res://data/fonts/PeaberryBase.ttf" id="3_1qai1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkrhc"]
+bg_color = Color(0.580392, 0.580392, 0.580392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u3r7"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkg18"]
+texture = ExtResource("1_retjx")
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52mfk"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2vut"]
+texture = ExtResource("1_retjx")
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0juf"]
+texture = ExtResource("1_retjx")
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ceng6"]
+texture = ExtResource("1_retjx")
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 16, 16)
+
+[resource]
+default_font = ExtResource("3_1qai1")
+default_font_size = 24
+Button/styles/focus = SubResource("StyleBoxFlat_pkrhc")
+Button/styles/hover = SubResource("StyleBoxFlat_6u3r7")
+Button/styles/normal = SubResource("StyleBoxTexture_kkg18")
+Button/styles/pressed = SubResource("StyleBoxFlat_52mfk")
+PopupDialog/styles/panel = SubResource("StyleBoxTexture_t2vut")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_d0juf")
+PopupPanel/styles/panel = SubResource("StyleBoxTexture_ceng6")

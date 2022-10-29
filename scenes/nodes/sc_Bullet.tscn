@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://daaogs54i4bon"]
+[gd_scene load_steps=8 format=3 uid="uid://cfqlovq5p3ffq"]
 
 [ext_resource type="Texture2D" uid="uid://bhdtnadw8mqwe" path="res://data/sprites/sp_bullet.png" id="1_6uwgl"]
 [ext_resource type="Script" path="res://src/Plane/Bullet/gd_Bullet_main.gd" id="2_jff7v"]
@@ -28,7 +28,7 @@ pixel_size = 0.03
 billboard = 1
 no_depth_test = true
 texture_filter = 0
-render_priority = 4
+render_priority = 15
 texture = ExtResource("1_6uwgl")
 script = ExtResource("2_jff7v")
 

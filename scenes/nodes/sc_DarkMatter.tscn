@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://caoj6s46fmcaf"]
+[gd_scene load_steps=21 format=3 uid="uid://dno2r5pvie8n"]
 
 [ext_resource type="Texture2D" uid="uid://daejl5tkvmeuh" path="res://data/sprites/sp_dark_matter.png" id="1_17p65"]
 [ext_resource type="Texture2D" uid="uid://cjs11y8vuniyk" path="res://data/sprites/sp_eye.png" id="2_6imij"]
@@ -95,7 +95,6 @@ max_damage_taken = 500
 shape = SubResource("SphereShape3D_sknib")
 
 [node name="PatternTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="DarkParticle" type="CPUParticles3D" parent="."]
 mesh = SubResource("PlaneMesh_lxkee")
@@ -143,41 +142,10 @@ texture = ExtResource("1_17p65")
 
 [node name="BulletRate" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="Shooting" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bi08m")
 volume_db = -30.0
-
-[node name="States" type="Node" parent="."]
-
-[node name="Phase1" type="Node" parent="States"]
-
-[node name="Straight" type="Node" parent="States/Phase1"]
-
-[node name="Lenght" type="Timer" parent="States/Phase1/Straight"]
-
-[node name="Rate" type="Timer" parent="States/Phase1/Straight"]
-
-[node name="CrissCross" type="Node" parent="States/Phase1"]
-
-[node name="Lenght" type="Timer" parent="States/Phase1/CrissCross"]
-
-[node name="Rate" type="Timer" parent="States/Phase1/CrissCross"]
-
-[node name="Spiral" type="Node" parent="States/Phase1"]
-
-[node name="Lenght" type="Timer" parent="States/Phase1/Spiral"]
-
-[node name="Rate" type="Timer" parent="States/Phase1/Spiral"]
-
-[node name="Stairs" type="Node" parent="States/Phase1"]
-
-[node name="Lenght" type="Timer" parent="States/Phase1/Stairs"]
-
-[node name="Rate" type="Timer" parent="States/Phase1/Stairs"]
-
-[node name="Phase2" type="Node" parent="States"]
 
 [connection signal="timeout" from="PatternTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="BulletRate" to="." method="_on_bullet_rate_timeout"]

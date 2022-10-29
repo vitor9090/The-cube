@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://b51tg62sinh0t"]
+
+[ext_resource type="Theme" uid="uid://dxgphhx27pauy" path="res://data/themes/tr_Menu_theme.tres" id="1_fm5i1"]
+[ext_resource type="Script" path="res://src/UI/PopUpMenu/gd_MenuButton_main.gd" id="1_g47bl"]
+[ext_resource type="Texture2D" uid="uid://d0p2kqh6vbe5l" path="res://data/sprites/sp_background.png" id="1_ksw3b"]
+[ext_resource type="AudioStream" uid="uid://bpj5vf0wp5im5" path="res://data/sounds/click_03.wav" id="3_iccku"]
+[ext_resource type="Script" path="res://src/UI/HelpButton/gd_HelpButton_main.gd" id="5_753aj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fm5i1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ksw3b")
+stretch_mode = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -646.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileButton" type="MenuButton" parent="ReferenceRect/HBoxContainer"]
+custom_minimum_size = Vector2i(100, 0)
+offset_right = 100.0
+offset_bottom = 46.0
+text = "File"
+alignment = 0
+item_count = 2
+popup/item_0/text = "Open"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Quit"
+popup/item_1/id = 1
+script = ExtResource("1_g47bl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ReferenceRect/HBoxContainer/FileButton"]
+stream = ExtResource("3_iccku")
+
+[node name="HelpButton" type="MenuButton" parent="ReferenceRect/HBoxContainer"]
+custom_minimum_size = Vector2i(100, 0)
+offset_left = 104.0
+offset_right = 204.0
+offset_bottom = 46.0
+text = "Help"
+alignment = 0
+item_count = 1
+popup/item_0/text = "Credits"
+popup/item_0/id = 0
+script = ExtResource("5_753aj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ReferenceRect/HBoxContainer/HelpButton"]
+stream = ExtResource("3_iccku")
+
+[node name="ColorRect" type="ColorRect" parent="ReferenceRect/HBoxContainer"]
+clip_contents = true
+offset_left = 208.0
+offset_right = 692.0
+offset_bottom = 46.0
+size_flags_horizontal = 3

@@ -1,4 +1,4 @@
 @echo off
-title "Infinite Sea (Dev-Debug build)"
+title "PSDreams Emulator"
 "%~dp0game.exe" "%*"
 pause > nul

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfavp4njpuarn"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://src/Camera3D.gd" id="1_bhdrj"]
 [ext_resource type="Shader" path="res://src/Data/gds_lensdistortion_Camera_fragment.gdshader" id="3_hoe8a"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqui3mr5y882n"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Texture2D" uid="uid://g8dny0s50op1" path="res://data/sprites/sp_hit.png" id="1_f7xvm"]
 

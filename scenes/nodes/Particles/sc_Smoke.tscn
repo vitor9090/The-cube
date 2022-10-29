@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi4eyfmeqdn8s"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Texture2D" uid="uid://cjwgobalytw7a" path="res://data/sprites/sp_smoke.png" id="1_62xdg"]
 
