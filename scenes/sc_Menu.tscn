@@ -129,15 +129,22 @@ offset_bottom = 692.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ReferenceRect/HBoxContainer/HelpButton/AboutWindow/BoxContainer/CenterContainer"]
-offset_left = 162.0
-offset_top = 278.0
-offset_right = 530.0
-offset_bottom = 413.0
+offset_left = 158.0
+offset_top = 251.0
+offset_right = 534.0
+offset_bottom = 440.0
 text = "Programming - VitorGabriel
 
 SFX - Mandarus
 
-Composer - Itay"
+Composer - Itay
+
+--------------------
+
+Move with
+Arrow keys or left joystick.
+Shoot with
+Z or A (On Xbox controller)"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/HBoxContainer/HelpButton/AboutWindow"]

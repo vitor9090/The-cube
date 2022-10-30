@@ -27,9 +27,11 @@ func _on_damage_taken(new_value):
 	var output = load('res://scenes/nodes/Particles/sc_ExplosionLine.tscn').instantiate()
 	output.position = global_position
 	output.emitting = true
+	
+	var sound = load('res://scenes/nodes/Sounds/sc_Explosion.tscn').instantiate()
+	sound.play()
 	get_tree().get_current_scene().add_child(output)
 	if $RayCast3D.is_colliding():
-		if $RayCast3D.get_collider().is_in_group('Boss'):
-			$RayCast3D.get_collider().get_node('HurtBox').damage_taken += 20
-			print($RayCast3D.get_collider())
+		if $RayCast3D.get_collider() is HurtBox:
+			$RayCast3D.get_collider().damage_taken += 20
 	queue_free()

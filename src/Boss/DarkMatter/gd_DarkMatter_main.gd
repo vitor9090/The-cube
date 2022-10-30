@@ -42,7 +42,6 @@ func _ready():
 	start_pos = position
 	$HurtBox.took_damage.connect(_on_damage_taken)
 	get_parent().game_has_started.connect(_on_game_start)
-	print(get_parent().name)
 
 func _on_bullet_rate_timeout():
 	if start_attacking:
@@ -97,6 +96,7 @@ func _on_bullet_rate_timeout():
 					$HurtBox.invincible = false
 					match  attack:
 						PHASE2.MISSILE:
+							print('missile')
 							bullet_rate.wait_time = 0
 							phase_lenght += 1
 							phase_duration = 1
@@ -118,23 +118,22 @@ func _on_bullet_rate_timeout():
 								position.x = start_pos.x
 								attack = PHASE2.STAIRS
 						PHASE2.STAIRS:
-							bullet_rate.wait_time = 2
+							bullet_rate.wait_time = 1
 							phase_duration = 10
 							phase_lenght += 1
 							spawn_bullet('stairs')
-							spawn_bullet('criss-cross')
+							spawn_bullet('spiral')
 							if phase_lenght > phase_duration:
 								phase_lenght = 0
 								attack = PHASE2.SNIPER
 						PHASE2.SNIPER:
+							print('sniper')
 							bullet_rate.wait_time = 1
 							phase_duration = 10
 							phase_lenght += 1
 							spawn_bullet('follow')
 							if phase_lenght > phase_duration:
 								phase_lenght = 0
-								position.x = start_pos.x
-								position.z = start_pos.z
 								attack = PHASE2.MISSILE
 
 				

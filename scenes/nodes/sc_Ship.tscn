@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4exgan4ljbnk"]
+[gd_scene load_steps=14 format=3 uid="uid://c4exgan4ljbnk"]
 
 [ext_resource type="Script" path="res://src/Plane/gd_Player_main.gd" id="1_in4ce"]
 [ext_resource type="ArrayMesh" uid="uid://cxfrtaux444c0" path="res://data/objects/plane.obj" id="2_drv63"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bjaqpobkerluf" path="res://data/sounds/Single_shot.wav" id="5_23fcv"]
 [ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplash.tscn" id="6_ermbp"]
 [ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplashCenter.tscn" id="7_oelcd"]
+[ext_resource type="AudioStream" uid="uid://bl2vhg2sd5on6" path="res://data/sounds/engine_loop.wav" id="8_bcm0j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej1nf"]
 shading_mode = 0
@@ -136,3 +137,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.00999999, -0.005)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.00999999, 0.005)
 
 [node name="WaterSplashCenter" parent="." instance=ExtResource("7_oelcd")]
+
+[node name="Engine" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_bcm0j")
+volume_db = -10.0
+autoplay = true
+doppler_tracking = 1

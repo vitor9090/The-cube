@@ -12,16 +12,17 @@ func _ready():
 func _input(event):
 	if event is InputEvent:
 		if event.is_action_pressed("main_pause"):
-			get_tree().paused = !get_tree().paused
-			if get_tree().paused == true:
-				MusicLoader.resume_song()
-			else:
-				if MusicLoader.is_song_playing == false:
-					MusicLoader.play_song('MainSong')
-			if $Boss.game_started == false:
-				$Boss/UI/CenterContainer/Countdown.visible = false
-				$Boss/Countdown.paused = true
-				$Boss.game_started = true
+			if is_instance_valid(player):
+				get_tree().paused = !get_tree().paused
+				if get_tree().paused == true:
+					MusicLoader.resume_song()
+				else:
+					if MusicLoader.is_song_playing == false:
+						MusicLoader.play_song('MainSong')
+				if $Boss.game_started == false:
+					$Boss/UI/CenterContainer/Countdown.visible = false
+					$Boss/Countdown.paused = true
+					$Boss.game_started = true
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://eycdhxyjl78"]
 
 [ext_resource type="Texture2D" uid="uid://drqqnew7lv16x" path="res://data/sprites/sp_fast_bullet.png" id="1_8ixy3"]
 [ext_resource type="Script" path="res://src/Boss/gd_FastBullet_main.gd" id="1_uwj6t"]
@@ -10,6 +10,7 @@
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="FastBullet" type="CharacterBody3D"]
+process_mode = 1
 script = ExtResource("1_uwj6t")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

@@ -67,6 +67,7 @@ radius = 1.0
 
 [node name="DarkMatter" type="CharacterBody3D" groups=["Boss"]]
 process_mode = 1
+collision_layer = 2
 script = ExtResource("2_ay2pm")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
@@ -89,7 +90,7 @@ scale_amount_curve = SubResource("Curve_leaxu")
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 2
 script = ExtResource("3_drwmo")
-max_damage_taken = 500
+max_damage_taken = 300
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("SphereShape3D_sknib")
@@ -130,7 +131,7 @@ stream = ExtResource("9_ddvqn")
 [node name="MissileHit5" type="AudioStreamPlayer" parent="HitSounds"]
 stream = ExtResource("10_0752j")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collsion" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_1cv14")
 
 [node name="MainSprite" type="Sprite3D" parent="."]

@@ -43,6 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Countdown" type="TextureRect" parent="UI/CenterContainer"]
+visible = false
 offset_left = 330.0
 offset_top = 330.0
 offset_right = 362.0
@@ -53,23 +54,18 @@ texture = SubResource("AnimatedTexture_wr7j2")
 stretch_mode = 3
 
 [node name="DarkMatter" parent="." instance=ExtResource("6_x2jon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 8.74228e-07)
-top_level = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.37115e-08)
 
 [node name="DarkMatter3" parent="." instance=ExtResource("6_x2jon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1)
-top_level = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.999999)
 
 [node name="DarkMatter4" parent="." instance=ExtResource("6_x2jon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
-top_level = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2)
 
 [node name="DarkMatter2" parent="." instance=ExtResource("6_x2jon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -0.999999)
-top_level = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
 
 [node name="DarkMatter5" parent="." instance=ExtResource("6_x2jon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
-top_level = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2)
 
 [connection signal="timeout" from="Countdown" to="." method="_on_countdown_timeout"]

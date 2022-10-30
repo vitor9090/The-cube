@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,6 +22,7 @@ grow_vertical = 2
 theme = ExtResource("1_8eye7")
 
 [node name="ColorRect" type="ColorRect" parent="ReferenceRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,6 +32,7 @@ color = Color(0.321569, 0.509804, 0.643137, 1)
 
 [node name="HeaderBarShadow" type="ColorRect" parent="ReferenceRect"]
 clip_contents = true
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 3.0
@@ -40,6 +43,7 @@ color = Color(0, 0, 0, 0.141176)
 
 [node name="HeaderBar" type="ColorRect" parent="ReferenceRect"]
 clip_contents = true
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 43.0
@@ -48,6 +52,7 @@ size_flags_horizontal = 3
 color = Color(0.517647, 0.698039, 0.831373, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="ReferenceRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,16 +60,36 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="ReferenceRect/CenterContainer"]
-offset_left = 95.0
-offset_top = 319.0
-offset_right = 596.0
-offset_bottom = 373.0
+layout_mode = 2
+offset_left = 89.0
+offset_top = 76.0
+offset_right = 603.0
+offset_bottom = 616.0
 text = "\"Thank you for playing!\"
 - Our team (Vitor, Itay and Mandarus)
+
+
+
+
+
+
+Made for:
+--------------
+|    32 Bit Jam    |
+--------------
+
+
+
+
+
+Press I + N + V to enable Invincibility
+Press D + E + B to enable Debug Camera
+Press R + E + L to disable Debug Camera
 "
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,6 +99,7 @@ grow_vertical = 2
 
 [node name="FileButton" type="MenuButton" parent="ReferenceRect/HBoxContainer"]
 custom_minimum_size = Vector2i(100, 0)
+layout_mode = 2
 offset_right = 100.0
 offset_bottom = 46.0
 text = "File"

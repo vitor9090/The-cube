@@ -18,8 +18,8 @@ signal boss_has_been_defeated
 var boss_defeated = false
 		
 func _ready():
-	position.x = 10
 	MusicLoader.speed_song(1)
+	$UI/CenterContainer/Countdown.visible = true
 	$UI/CenterContainer/Countdown.texture.current_frame = 0
 	for item in get_children():
 		if item is CharacterBody3D:
@@ -29,7 +29,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if game_started:
-		position.y = 10
+		position.x = lerp(position.x, -6.0, 0.1)
 	
 	for children in get_children():
 		if children is CharacterBody3D:
@@ -38,11 +38,9 @@ func _process(delta):
 					passed_objects.append(children)
 					
 	for item in objects:
-		print(objects.size())
 		if not is_instance_valid(item):
 			objects.erase(item)
 				
-		print(defeated_objects)
 		if objects.size() == 0:
 			boss_defeated = true
 			emit_signal("boss_has_been_defeated", boss_defeated)

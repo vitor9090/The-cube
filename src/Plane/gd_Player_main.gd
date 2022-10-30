@@ -14,6 +14,9 @@ func _physics_process(delta):
 	var input_vector = Vector2(Input.get_axis("player_move_left", 'player_move_right'), Input.get_axis("player_move_backwards", 'player_move_foward'))
 	input_vector = input_vector.normalized()
 	
+	if $Engine.playing == false:
+		$Engine.play(0.0)
+	
 	if Input.is_action_just_pressed('player_action_shoot'):
 		_velocity.x += 10 * delta
 		var output = load('res://scenes/nodes/sc_Bullet.tscn').instantiate()

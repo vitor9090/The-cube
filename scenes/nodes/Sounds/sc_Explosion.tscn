@@ -4,4 +4,3 @@
 
 [node name="ExplosionSFX" type="AudioStreamPlayer"]
 stream = ExtResource("1_uao10")
-pitch_scale = 0.8

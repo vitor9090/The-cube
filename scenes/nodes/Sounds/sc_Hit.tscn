@@ -5,4 +5,3 @@
 [node name="HitSound" type="AudioStreamPlayer"]
 stream = ExtResource("1_s5d06")
 volume_db = -5.0
-pitch_scale = 1.5

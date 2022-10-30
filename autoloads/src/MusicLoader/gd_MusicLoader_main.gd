@@ -24,7 +24,6 @@ var last_second = 0.0
 		AudioServer.set_bus_mute(master_sound, new_value)
 
 func _ready():
-	print(audio_paths['MainSong'])
 	if muted == false:
 		$Song.volume_db = 0
 	else:
@@ -42,6 +41,5 @@ func play_song(song_name) -> void:
 	if $Song.stream != load(audio_paths.get(song_name, 'MainSong')):
 		$Song.stream = load(audio_paths.get(song_name, 'MainSong'))
 	if !$Song.playing:
-		print(last_second)
 		$Song.play(last_second)
 		is_song_playing = true
