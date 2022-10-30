@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://hxt7w15pbaj"]
 
 [ext_resource type="Script" path="res://src/Boss/gd_Missile_main.gd" id="2_v05we"]
 [ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="3_2gott"]
@@ -87,7 +87,7 @@ max_damage_taken = 9999
 shape = SubResource("BoxShape3D_ewio7")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(-100, 0, 0)
+target_position = Vector3(100, 0, 0)
 collision_mask = 4
 
 [node name="DamageBox" type="Area3D" parent="."]

@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://1bwe7eqs5dxx"]
+[gd_scene load_steps=13 format=3 uid="uid://c4exgan4ljbnk"]
 
-[ext_resource type="Script" path="res://src/Plane/gd_Player_main.gd" id="1_56ao5"]
-[ext_resource type="ArrayMesh" uid="uid://cxfrtaux444c0" path="res://data/objects/plane.obj" id="2_wtdit"]
-[ext_resource type="Texture2D" uid="uid://dca2eigjcb8a7" path="res://data/sprites/sp_thruster.png" id="3_m7vcv"]
-[ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="4_dbw81"]
-[ext_resource type="AudioStream" uid="uid://bjaqpobkerluf" path="res://data/sounds/Single_shot.wav" id="5_6sqap"]
-[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplash.tscn" id="6_07k3h"]
-[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplashCenter.tscn" id="7_k6gfa"]
-[ext_resource type="PackedScene" uid="uid://clvl7q1jhar0i" path="res://scenes/nodes/Sounds/sc_Explosion.tscn" id="8_44bby"]
+[ext_resource type="Script" path="res://src/Plane/gd_Player_main.gd" id="1_in4ce"]
+[ext_resource type="ArrayMesh" uid="uid://cxfrtaux444c0" path="res://data/objects/plane.obj" id="2_drv63"]
+[ext_resource type="Texture2D" uid="uid://dca2eigjcb8a7" path="res://data/sprites/sp_thruster.png" id="3_jvgvq"]
+[ext_resource type="Script" path="res://src/CollisionBoxes/HurtBox/gd_HurtBox_main.gd" id="4_cv21s"]
+[ext_resource type="AudioStream" uid="uid://bjaqpobkerluf" path="res://data/sounds/Single_shot.wav" id="5_23fcv"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplash.tscn" id="6_ermbp"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/Particles/sc_WaterSplashCenter.tscn" id="7_oelcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej1nf"]
 shading_mode = 0
@@ -76,20 +75,17 @@ _data = {
 "anim_thruster": SubResource("Animation_q0mr0")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ktw8n"]
-size = Vector3(0.00525773, 0.00295488, 0.00332189)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_74tun"]
 size = Vector3(0.007, 0.002, 0.002)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 1, 16, 0)
-script = ExtResource("1_56ao5")
+script = ExtResource("1_in4ce")
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 9.31323e-10)
 material_override = SubResource("StandardMaterial3D_ej1nf")
-mesh = ExtResource("2_wtdit")
+mesh = ExtResource("2_drv63")
 skeleton = NodePath("../..")
 
 [node name="Thruster" type="Node3D" parent="."]
@@ -102,7 +98,7 @@ axis = 1
 no_depth_test = true
 texture_filter = 0
 render_priority = 1
-texture = ExtResource("3_m7vcv")
+texture = ExtResource("3_jvgvq")
 hframes = 2
 
 [node name="Sprite3D2" type="Sprite3D" parent="Thruster"]
@@ -111,7 +107,7 @@ pixel_size = 0.0004
 no_depth_test = true
 texture_filter = 0
 render_priority = 1
-texture = ExtResource("3_m7vcv")
+texture = ExtResource("3_jvgvq")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Thruster"]
@@ -122,33 +118,21 @@ libraries = {
 "": SubResource("AnimationLibrary_k6snr")
 }
 
-[node name="HurtBox" type="Area3D" parent="Thruster"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.000542772, 0, 0)
-collision_mask = 4
-script = ExtResource("4_dbw81")
-max_damage_taken = 999999999999999
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Thruster/HurtBox"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00410408, 0, 0)
-shape = SubResource("BoxShape3D_ktw8n")
-
 [node name="HurtBox" type="Area3D" parent="."]
 collision_mask = 22
-script = ExtResource("4_dbw81")
+script = ExtResource("4_cv21s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("BoxShape3D_74tun")
 
 [node name="Shooting" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_6sqap")
+stream = ExtResource("5_23fcv")
 pitch_scale = 1.35
 
-[node name="WaterSplash" parent="." instance=ExtResource("6_07k3h")]
+[node name="WaterSplash" parent="." instance=ExtResource("6_ermbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.00999999, -0.005)
 
-[node name="WaterSplash2" parent="." instance=ExtResource("6_07k3h")]
+[node name="WaterSplash2" parent="." instance=ExtResource("6_ermbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.00999999, 0.005)
 
-[node name="WaterSplashCenter" parent="." instance=ExtResource("7_k6gfa")]
-
-[node name="ExplosionSFX" parent="." instance=ExtResource("8_44bby")]
+[node name="WaterSplashCenter" parent="." instance=ExtResource("7_oelcd")]

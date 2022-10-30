@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://q5kb100t2ksj"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Texture2D" uid="uid://drqqnew7lv16x" path="res://data/sprites/sp_fast_bullet.png" id="1_8ixy3"]
 [ext_resource type="Script" path="res://src/Boss/gd_FastBullet_main.gd" id="1_uwj6t"]
@@ -28,7 +28,6 @@ direction = Vector3(0, 0, 0)
 [node name="DamageBox" type="Area3D" parent="."]
 collision_layer = 4
 script = ExtResource("4_qsbr3")
-damage = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageBox"]
 shape = SubResource("BoxShape3D_yru63")

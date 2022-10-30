@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhjnkbrhpxllq"]
+
+[ext_resource type="Theme" uid="uid://dxgphhx27pauy" path="res://data/themes/tr_Menu_theme.tres" id="1_8eye7"]
+[ext_resource type="Script" path="res://src/UI/OpenButton/gd_FileButtonEnd.gd" id="2_bphj0"]
+[ext_resource type="AudioStream" uid="uid://bpj5vf0wp5im5" path="res://data/sounds/click_03.wav" id="3_t1ddh"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8eye7")
+
+[node name="ColorRect" type="ColorRect" parent="ReferenceRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 0.509804, 0.643137, 1)
+
+[node name="HeaderBarShadow" type="ColorRect" parent="ReferenceRect"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 3.0
+offset_bottom = 46.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.141176)
+
+[node name="HeaderBar" type="ColorRect" parent="ReferenceRect"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 43.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+color = Color(0.517647, 0.698039, 0.831373, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ReferenceRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ReferenceRect/CenterContainer"]
+offset_left = 95.0
+offset_top = 319.0
+offset_right = 596.0
+offset_bottom = 373.0
+text = "\"Thank you for playing!\"
+- Our team (Vitor, Itay and Mandarus)
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -646.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileButton" type="MenuButton" parent="ReferenceRect/HBoxContainer"]
+custom_minimum_size = Vector2i(100, 0)
+offset_right = 100.0
+offset_bottom = 46.0
+text = "File"
+alignment = 0
+item_count = 2
+popup/item_0/text = "Open"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Quit"
+popup/item_1/id = 1
+script = ExtResource("2_bphj0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ReferenceRect/HBoxContainer/FileButton"]
+stream = ExtResource("3_t1ddh")

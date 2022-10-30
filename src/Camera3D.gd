@@ -30,9 +30,6 @@ var interacted_object:PSXPhysicsObject = null:
 var looking_at = null
 
 var selected_object = null
-
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 func _input(event):
 	if event is InputEventMouseMotion:

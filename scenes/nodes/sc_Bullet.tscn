@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfqlovq5p3ffq"]
+[gd_scene load_steps=8 format=3 uid="uid://cs4opudjfc3vh"]
 
 [ext_resource type="Texture2D" uid="uid://bhdtnadw8mqwe" path="res://data/sprites/sp_bullet.png" id="1_6uwgl"]
 [ext_resource type="Script" path="res://src/Plane/Bullet/gd_Bullet_main.gd" id="2_jff7v"]
 [ext_resource type="Texture2D" uid="uid://dhpw34byijw2f" path="res://data/sprites/sp_circle_particle.png" id="3_5x5xt"]
-[ext_resource type="PackedScene" uid="uid://bw42ubvd27yvb" path="res://scenes/nodes/sc_Damage_box.tscn" id="4_ml3eb"]
+[ext_resource type="PackedScene" path="res://scenes/nodes/sc_Damage_box.tscn" id="4_ml3eb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5e25"]
 transparency = 1
@@ -24,6 +24,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Bullet" type="Sprite3D"]
+process_mode = 1
 pixel_size = 0.03
 billboard = 1
 no_depth_test = true
@@ -50,4 +51,3 @@ scale_amount_curve = SubResource("Curve_fxqu6")
 collision_layer = 8
 collision_mask = 34
 damage = 2
-destroy_after_damage = false

@@ -1,77 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxhsb54rp78xr"]
+[gd_scene load_steps=8 format=3 uid="uid://b5qkx288b4mdj"]
 
-[ext_resource type="Script" path="res://src/Boss/gd_Boss_main.gd" id="1_2ay0b"]
-[ext_resource type="PackedScene" uid="uid://dno2r5pvie8n" path="res://scenes/nodes/sc_DarkMatter.tscn" id="1_kjfpr"]
-[ext_resource type="Texture2D" uid="uid://cq38f6jw2j8n0" path="res://data/sprites/countdown/sp_countdown_3.png" id="3_4wyig"]
-[ext_resource type="Texture2D" uid="uid://din3q6xclqt4u" path="res://data/sprites/countdown/sp_countdown_2.png" id="4_fgfjx"]
-[ext_resource type="Texture2D" uid="uid://dect4ggnu7qtb" path="res://data/sprites/countdown/sp_countdown_1.png" id="5_2l833"]
-[ext_resource type="Texture2D" uid="uid://cdmvmq21bkcio" path="res://data/sprites/countdown/sp_countdown_0.png" id="6_jh1gm"]
+[ext_resource type="Script" path="res://src/Boss/gd_Boss_main.gd" id="1_u8lec"]
+[ext_resource type="Texture2D" uid="uid://cq38f6jw2j8n0" path="res://data/sprites/countdown/sp_countdown_3.png" id="3_juxep"]
+[ext_resource type="Texture2D" uid="uid://din3q6xclqt4u" path="res://data/sprites/countdown/sp_countdown_2.png" id="4_7ucwv"]
+[ext_resource type="Texture2D" uid="uid://dect4ggnu7qtb" path="res://data/sprites/countdown/sp_countdown_1.png" id="5_wpvb4"]
+[ext_resource type="Texture2D" uid="uid://cdmvmq21bkcio" path="res://data/sprites/countdown/sp_countdown_0.png" id="6_uyihf"]
+[ext_resource type="PackedScene" uid="uid://bsld3hkcdbx1w" path="res://scenes/nodes/sc_DarkMatter.tscn" id="6_x2jon"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_wr7j2"]
 frames = 4
-frame_0/texture = ExtResource("3_4wyig")
-frame_1/texture = ExtResource("4_fgfjx")
+frame_0/texture = ExtResource("3_juxep")
+frame_1/texture = ExtResource("4_7ucwv")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_2l833")
+frame_2/texture = ExtResource("5_wpvb4")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_jh1gm")
+frame_3/texture = ExtResource("6_uyihf")
 frame_3/duration = 1.0
 
 [node name="Boss" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 16, 0)
-script = ExtResource("1_2ay0b")
-
-[node name="DarkMatter" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-attack_order = [{
-"attack": "spiral",
-"time": 5
-}, {
-"attack": "straight",
-"time": 10
-}, {
-"attack": "criss-cross",
-"time": 4
-}]
-attack_order_phase_2 = [{
-"attack": "missile",
-"rate": 5.0,
-"time": 10.0
-}]
-
-[node name="DarkMatter2" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
-
-[node name="DarkMatter7" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3)
-
-[node name="DarkMatter8" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3)
-
-[node name="DarkMatter3" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-
-[node name="DarkMatter9" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
-attack_order = [{
-"attack": "straight",
-"rate": 1.0,
-"time": 2
-}, {
-"attack": "middle",
-"time": 10.0
-}]
-
-[node name="DarkMatter10" parent="." instance=ExtResource("1_kjfpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-attack_order = [{
-"attack": "straight",
-"rate": 1.0,
-"time": 2
-}, {
-"attack": "middle",
-"time": 10.0
-}]
+process_mode = 1
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_u8lec")
 
 [node name="Countdown" type="Timer" parent="."]
 wait_time = 3.0
@@ -102,5 +51,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_wr7j2")
 stretch_mode = 3
+
+[node name="DarkMatter" parent="." instance=ExtResource("6_x2jon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 8.74228e-07)
+top_level = true
+
+[node name="DarkMatter3" parent="." instance=ExtResource("6_x2jon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1)
+top_level = true
+
+[node name="DarkMatter4" parent="." instance=ExtResource("6_x2jon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+top_level = true
+
+[node name="DarkMatter2" parent="." instance=ExtResource("6_x2jon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -0.999999)
+top_level = true
+
+[node name="DarkMatter5" parent="." instance=ExtResource("6_x2jon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+top_level = true
 
 [connection signal="timeout" from="Countdown" to="." method="_on_countdown_timeout"]

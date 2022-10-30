@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dxgphhx27pauy"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dxgphhx27pauy"]
 
 [ext_resource type="Texture2D" uid="uid://cfywow0v4psxt" path="res://data/sprites/sp_button.png" id="1_retjx"]
+[ext_resource type="Texture2D" uid="uid://b72t5jvsvwj2m" path="res://data/sprites/sp_checkmark_enabled.png" id="2_gt1wu"]
 [ext_resource type="FontFile" uid="uid://vaughx2sxh45" path="res://data/fonts/PeaberryBase.ttf" id="3_1qai1"]
+[ext_resource type="Texture2D" uid="uid://dydxtckc8o78x" path="res://data/sprites/sp_checkmark_disabled.png" id="3_5441q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkrhc"]
 bg_color = Color(0.580392, 0.580392, 0.580392, 1)
@@ -62,6 +64,11 @@ Button/styles/focus = SubResource("StyleBoxFlat_pkrhc")
 Button/styles/hover = SubResource("StyleBoxFlat_6u3r7")
 Button/styles/normal = SubResource("StyleBoxTexture_kkg18")
 Button/styles/pressed = SubResource("StyleBoxFlat_52mfk")
+CheckBox/icons/checked = ExtResource("2_gt1wu")
+CheckBox/icons/checked_disabled = ExtResource("3_5441q")
+CheckBox/icons/unchecked = ExtResource("3_5441q")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.423529)
+Label/fonts/font = ExtResource("3_1qai1")
 PopupDialog/styles/panel = SubResource("StyleBoxTexture_t2vut")
 PopupMenu/styles/panel = SubResource("StyleBoxTexture_d0juf")
 PopupPanel/styles/panel = SubResource("StyleBoxTexture_ceng6")
